@@ -6,7 +6,7 @@ package isavin;
  * Куча представляет собой абстрактную структуру данных типа двоичного дерева.
  * Основное правило кучи <b>a[child] &le; a[parent]</b>
  * 
- * @author isavin
+ * @author isavin 
  *
  */
 public class HeapSort {

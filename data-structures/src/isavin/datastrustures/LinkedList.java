@@ -1,4 +1,4 @@
-package isavin.datastrustures.list;
+package isavin.datastrustures;
 
 import java.util.NoSuchElementException;
 import java.util.Iterator;

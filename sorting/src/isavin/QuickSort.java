@@ -48,6 +48,11 @@ public class QuickSort {
 			return;
 		}
 		
+		if (end - start <= 20) {
+			InsertionSort.sort(array, start, end);
+			return;
+		}
+		
 		int pivot = partition(array, start, end, isRandom);
 		quicksort(array, start, pivot - 1, isRandom);
 		quicksort(array, pivot + 1, end, isRandom);

@@ -1,7 +1,7 @@
 package isavin;
 
 /**
- * Сортировка вставками. Удобна для сортировка
+ * Сортировка вставками. Удобна для сортировки
  * небольших последовательностей.
  * Для понимания нужно представить, как 
  * сортируются карты в руке. Карта из левой части
@@ -46,6 +46,22 @@ public class InsertionSort {
 			}
 			Main.swaping++;
 			a[j+1] = key;
+		}
+	}
+	
+	public static void sort(int[] array, int start, int end) {
+		for (int i = start + 1; i <= end; i++) {
+			int key = array[i];
+			int j = i - 1;
+			Main.comparing++;
+			while (j >= 0 && array[j] >= key) {
+				Main.swaping++;
+				Main.comparing++;
+				array[j+1] = array[j];
+				j--;
+			}
+			Main.swaping++;
+			array[j+1] = key;
 		}
 	}
 

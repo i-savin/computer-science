@@ -2,7 +2,7 @@ package isavin;
 
 public class Main {
 
-	private static final int ARRAY_CAPACITY = 100000000;
+	private static final int ARRAY_CAPACITY = 1000000;
 	private static final int MAX_VALUE_FACTOR = 10;
 	
 	public static long comparing;
@@ -11,16 +11,17 @@ public class Main {
 	public static void main(String[] args) {
 		int[] a = generateArray(ARRAY_CAPACITY);
 		long startTime = System.currentTimeMillis();
-		printArray(a);
+//		printArray(a);
 //		BubbleSort.sort(a, false);
 //		printArray(a);
 //		System.out.println("Comparing: " + Main.comparing);
 //		System.out.println("Swaping: " + Main.swaping);
 //		QuickSort.sort(a);
 //		MergeSort.sort(a);
-//		InsertionSort.sort(a);
-		HeapSort.sort(a);
-		printArray(a);
+		InsertionSort.sort(a, 0, a.length - 1);
+//		HeapSort.sort(a);
+//		printArray(a);
+//		CountingSort.sort(a, ARRAY_CAPACITY * MAX_VALUE_FACTOR);
 		long endTime = System.currentTimeMillis();
 		System.out.println("Time: " + (endTime - startTime));
 		System.out.println("Comparing: " + Main.comparing);

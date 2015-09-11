@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
  * Created by isavin on 11.09.2015.
  */
 public class DoubleLinkedList<E> {
-    private Node head;
-    private Node tail;
+    private Node<E> head;
+    private Node<E> tail;
 
     public DoubleLinkedList(E e) {
         addLast(e);
@@ -19,7 +19,7 @@ public class DoubleLinkedList<E> {
 
     public void addFirst(E e) {
         Node<E> h = head;
-        Node<E> newNode = new Node(null, e, h);
+        Node<E> newNode = new Node<>(null, e, h);
 
         head = newNode;
         if (h == null) {
@@ -31,7 +31,7 @@ public class DoubleLinkedList<E> {
 
     public void addLast(E e) {
         Node<E> t = tail;
-        Node<E> newNode = new Node(t, e, null);
+        Node<E> newNode = new Node<>(t, e, null);
         tail = newNode;
         if (t == null) {
             head = newNode;
@@ -131,7 +131,7 @@ public class DoubleLinkedList<E> {
         private E item;
 
         Node() {}
-        Node(Node<E> prev, E e, Node next) {
+        Node(Node<E> prev, E e, Node<E> next) {
             this.prev = prev;
             this.item = e;
             this.next = next;

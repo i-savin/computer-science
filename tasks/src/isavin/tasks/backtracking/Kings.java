@@ -7,9 +7,10 @@ public class Kings {
     private int kings = 0;
     //расположение ферзей - pozition[i] - позиция ферзя на i-й горизонтали
     private int[] pozition;
+    private int solutionsNumber = 0;
 
     public static void main(String[] args) {
-        Kings kings = new Kings(3);
+        Kings kings = new Kings(20);
         kings.proceed();
     }
 
@@ -28,6 +29,7 @@ public class Kings {
                 down();
             }
         }
+        System.out.println("Total solutions: " + solutionsNumber);
     }
 
     private void upAndWork() {
@@ -39,10 +41,11 @@ public class Kings {
 
     private void work() {
         if (kings == size && !isDanger()) {
-            for (int i = 0; i < size; i++) {
-                System.out.print("<" + i + ", " + pozition[i] + ">");
-            }
-            System.out.println();
+//            for (int i = 0; i < size; i++) {
+//                System.out.print("<" + i + "," + pozition[i] + "> ");
+//            }
+//            System.out.println();
+            solutionsNumber++;
         }
     }
 
@@ -50,9 +53,9 @@ public class Kings {
         if (kings <= 1) {
             return false;
         }
-        for (int i = 1; i <= kings; i++) {
+        for (int i = 1; i < kings; i++) {
             if (pozition[i-1] == pozition[kings-1]
-                || Math.abs(pozition[i-1] - pozition[kings-1]) == Math.abs(i - kings + 1)) {
+                || Math.abs(pozition[i-1] - pozition[kings-1]) == Math.abs(i - kings)) {
                     return true;
                 }
         }
@@ -66,7 +69,7 @@ public class Kings {
 
     private boolean isRight() {
         // System.out.print("isRight");
-        return kings > 0 && pozition[kings-1] < size;
+        return kings > 0 && pozition[kings-1] < size-1;
     }
 
     private boolean isDown() {

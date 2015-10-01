@@ -37,10 +37,7 @@ public class Trie {
             }
             currentNode = nextNode;
         }
-        if (currentNode.leaf) {
-            return true;
-        }
-        return false;
+        return currentNode.leaf;
     }
 
     public static void main(String[] args) {

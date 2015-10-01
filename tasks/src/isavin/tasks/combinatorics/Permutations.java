@@ -44,5 +44,4 @@ public class Permutations {
         list.set(from, list.get(to));
         list.set(to, temp);
     }
-
 }

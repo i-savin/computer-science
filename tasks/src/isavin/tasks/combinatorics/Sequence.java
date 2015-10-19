@@ -1,13 +1,13 @@
 package isavin.tasks.combinatorics;
 
 public class Sequence {
-	
+
 	public static void main(String[] args) {
 		sequence2(4);
 	}
 
 	/**
-	 * Напечатать все последовательности чисел от 0 до n длины k
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 0 пїЅпїЅ n пїЅпїЅпїЅпїЅпїЅ k
 	 */
 	public static void sequence(int k, int n) {
 		int sequencesNumber = (int) Math.pow(n + 1, k) - 1;
@@ -21,9 +21,9 @@ public class Sequence {
 			i++;
 		}
 	}
-	
+
 	/**
-	 * Напечатать все подмножества множества 1..k
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1..k
 	 */
 	public static void subset(int k) {
 		int sequencesNumber = (int) Math.pow(2, k);
@@ -42,14 +42,14 @@ public class Sequence {
 			a = next2(a, 1);
 			i++;
 		}
-		
+
 		while (i < sequencesNumber) {
-			
+
 		}
 	}
-	
+
 	/**
-	 * Напечатать все послудовательности числе длины k такие что a[i]<=i
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ k пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ a[i]<=i
 	 */
 	public static void sequence2(int k) {
 		int[] a = new int[k];
@@ -57,7 +57,7 @@ public class Sequence {
 		for (int i = 0; i < last.length; i++) {
 			last[i] = i;
 		}
-		
+
 		while (!arraysEuqal(a, last)) {
 			print(a);
 			a = next3(a);
@@ -66,7 +66,7 @@ public class Sequence {
 	}
 
 	/**
-	 * Возвращает следующий элемент лексикографической последовательности массивов (прямой порядок):
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ):
 	 * 000, 001, 010, 011, 100, 101, 110, 111
 	 */
 	static int[] next(int[] a, int n) {
@@ -80,11 +80,11 @@ public class Sequence {
 		}
 		return a;
 	}
-	
+
 	/**
-	 * Возвращает следующий элемент лексикографической последовательности массивов (обратный порядок):
+	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ):
 	 * 111, 110, 101, 100, 011, 010, 001,  000
-	 */	
+	 */
 	static int[] next2(int[] a, int n) {
 		int i = a.length - 1;
 		while (i >= 0 && a[i] == 0) {
@@ -96,7 +96,7 @@ public class Sequence {
 		}
 		return a;
 	}
-	
+
 	static int[] next3(int[] a) {
 		int i = a.length - 1;
 		while (i >= 0 && a[i] == i) {
@@ -108,15 +108,15 @@ public class Sequence {
 		}
 		return a;
 	}
-	
-	static void print(int[] a) {
+
+	public static void print(int[] a) {
 		for (int i : a) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
 	}
-	
-	static boolean arraysEuqal(int[] a, int[] b) {
+
+	public static boolean arraysEuqal(int[] a, int[] b) {
 		if (a.length != b.length) {
 			return false;
 		}

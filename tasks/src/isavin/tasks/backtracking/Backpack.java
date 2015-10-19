@@ -2,6 +2,20 @@ package isavin.tasks.backtracking;
 
 import isavin.tasks.combinatorics.Sequence;
 
+/**
+ * Дана массив из n чисел и число s. Требуется узнать, можно ли число s
+ * представить как сумму некоторых числе массива.
+ *
+ * Решаем обходом дерева. k-я позиция дерева - последовательность из k
+ * boolean значений, показывающих, входит ли член массива с таким индексом
+ * в нужную сумму. Позиция допустима, если сумма не превосходит s.
+ * Робот, осуществляющий обход дерева, может двигаться вверх, вправо (к брату) и
+ * вниз. Пример дерева:
+ * 11 10 01 00
+ *  \ /   \ /
+ *   1     0
+ *    \___/
+ */
 public class Backpack {
 
     private int sum;
@@ -12,14 +26,16 @@ public class Backpack {
     private int currentSum;
 
     public static void main(String[] args) {
-        int n = 10;
-        int s = 12;
+        int n = 1;
+        int s = 1;
         int[] source = new int[n];
         for (int i = 0; i < n; i++) {
             source[i] = i + 1;
         }
 
+        System.out.print("Source array: ");
         Sequence.print(source);
+        System.out.println("Target sum: " + s);
 
         Backpack backpack = new Backpack(source, s);
 
@@ -55,24 +71,20 @@ public class Backpack {
     }
 
     private void work() {
-        if (sumByMask() == sum) {
+        if (currentSum == sum) {
             solutionsNumber++;
             printArrayByMask();
         }
     }
 
     private boolean isUp() {
-        // System.out.println((currentMaskSize < source.length) && (sumByMask() < sum));
-        // if (currentMaskSize < 0) {
-        //     return true;
-        // }
-        return (currentMaskSize < source.length - 1) && (sumByMask() < sum);
+        return (currentMaskSize < source.length) && (currentSum < sum);
     }
 
     private void up() {
         currentMaskSize++;
+        currentSum += source[currentMaskSize-1];
         mask[currentMaskSize-1] = true;
-        // sum += source[currentMaskSize];
     }
 
     private boolean isRight() {
@@ -80,7 +92,7 @@ public class Backpack {
     }
 
     private void right() {
-        // sum -= source[currentMaskSize];
+        currentSum -= source[currentMaskSize-1];
         mask[currentMaskSize-1] = false;
     }
 
@@ -89,21 +101,10 @@ public class Backpack {
     }
 
     private void down() {
-        if (mask[currentMaskSize-1]) {
-            // sum -= source[currentMaskSize];
+        if (isRight()) {
+            currentSum -= source[currentMaskSize-1];
         }
         currentMaskSize--;
-    }
-
-    private int sumByMask() {
-        int sum = 0;
-        for (int i = 0; i < currentMaskSize; i++) {
-            if (mask[i]) {
-                sum += source[i];
-            }
-        }
-        // System.out.println(sum);
-        return sum;
     }
 
     private void printArrayByMask() {

@@ -16,18 +16,17 @@ import isavin.tasks.combinatorics.Sequence;
  *   1     0
  *    \___/
  */
-public class Backpack {
+public class Backpack extends BacktrackingAbstract {
 
     private int sum;
     private int[] source;
     private boolean[] mask;
     private int currentMaskSize;
-    private int solutionsNumber;
     private int currentSum;
 
     public static void main(String[] args) {
-        int n = 1;
-        int s = 1;
+        int n = 10;
+        int s = 10;
         int[] source = new int[n];
         for (int i = 0; i < n; i++) {
             source[i] = i + 1;
@@ -50,57 +49,52 @@ public class Backpack {
         this.solutionsNumber = 0;
     }
 
-    public void proceed() {
-        upAndWork();
-        while (isDown()) {
-            if (isRight()) {
-                right();
-                upAndWork();
-            } else {
-                down();
-            }
-        }
-        System.out.println("Total solutions: " + solutionsNumber);
-    }
-
-    private void upAndWork() {
+	@Override
+    protected void upAndWork() {
         while(isUp()) {
             up();
         }
         work();
     }
 
-    private void work() {
+	@Override
+    protected void work() {
         if (currentSum == sum) {
             solutionsNumber++;
             printArrayByMask();
         }
     }
 
-    private boolean isUp() {
+	@Override
+    protected boolean isUp() {
         return (currentMaskSize < source.length) && (currentSum < sum);
     }
 
-    private void up() {
+	@Override
+    protected void up() {
         currentMaskSize++;
         currentSum += source[currentMaskSize-1];
         mask[currentMaskSize-1] = true;
     }
 
-    private boolean isRight() {
+	@Override
+    protected boolean isRight() {
         return mask[currentMaskSize-1];
     }
 
-    private void right() {
+	@Override
+    protected void right() {
         currentSum -= source[currentMaskSize-1];
         mask[currentMaskSize-1] = false;
     }
 
-    private boolean isDown() {
+	@Override
+    protected boolean isDown() {
         return currentMaskSize > 0;
     }
 
-    private void down() {
+	@Override
+    protected void down() {
         if (isRight()) {
             currentSum -= source[currentMaskSize-1];
         }

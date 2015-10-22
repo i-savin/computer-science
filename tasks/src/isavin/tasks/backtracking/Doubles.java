@@ -8,7 +8,7 @@ public class Doubles extends BacktrackingAbstract {
     private int currentSize;
 
     public static void main(String[] args) {
-        int n = 2;
+        int n = 4;
         System.out.println("n: " + n);
 
         Doubles doubles = new Doubles(n);
@@ -42,11 +42,12 @@ public class Doubles extends BacktrackingAbstract {
     @Override
     protected boolean isUp() {
         // System.out.println(currentSize);
-        if (currentSize < 3) {
-            return true;
-        }
-        return (n >= 3 && currentSize < n && !(source[currentSize - 1] == source[currentSize - 2]
-                && source[currentSize - 2] == source[currentSize - 3]));
+		if (n < 3) {
+			return currentSize < n;
+		} else {
+			return (currentSize <= 2 || (currentSize < n && !(source[currentSize - 1] == source[currentSize - 2]
+                && source[currentSize - 2] == source[currentSize - 3])));
+		}
     }
 
     @Override

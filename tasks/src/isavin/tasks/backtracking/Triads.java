@@ -52,10 +52,11 @@ public class Triads extends BacktrackingAbstract {
 
 	@Override
 	protected boolean isUp() {
-		if (currentSize <= 1) {
-			return true;
+		if (n < 2) {
+			return currentSize < n;
+		} else {
+			return (currentSize <= 1 || (currentSize < n && !(source[currentSize - 1] == source[currentSize - 2])));
 		}
-		return (currentSize < n && source[currentSize - 1] != source[currentSize - 2]);
 	}
 
 	@Override
